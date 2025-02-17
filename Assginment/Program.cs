@@ -522,6 +522,38 @@ namespace Assginment
 
             #endregion
 
+            #region Element Operators
+
+            #region  1. Get first Product out of Stock
+
+            //var Result = ProductsList.FirstOrDefault(P => P.UnitsInStock == 0);
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region  2. Return the first product whose Price > 1000, unless there is no match, in which case null isreturned
+
+            //var Result = ProductsList.FirstOrDefault(P => P.UnitPrice > 1000);
+
+            //Console.WriteLine(Result);
+
+            //// null will be returned if ProductList is not null Or no case match the condition
+
+            #endregion
+
+            #region  3. Retrieve the second number greater than 5
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var Result = Arr.Where(A => A > 5).ElementAt( new Index(1));
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #endregion
+
             #endregion
         }
 
