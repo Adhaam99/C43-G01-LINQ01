@@ -386,15 +386,95 @@ namespace Assginment
             //            P.ProductID,
             //            P.ProductName,
             //            P.UnitsInStock
-                      
+
             //          }).SingleOrDefault();
 
             //Console.WriteLine(Result);
 
             #endregion
 
-            #region Aggregate Operators
+            #region 5. Aggregate Operators
 
+            #region Count() , TryGetNonEnumeratedCount()
+
+
+            //var Result = ProductList.Count(); // LINQ Operator
+            //Result = ProductList.Count; // List Property [Recommended]
+
+            //var Numbers = Enumerable.Range(1, 100);
+            //Console.WriteLine(Numbers.Count()); // 100
+
+            //var NumbersList = Numbers.ToList();
+            //Console.WriteLine(NumbersList.Count()); // 100
+            //Console.WriteLine(NumbersList.Count); // 100
+
+            //Result = ProductList.Where(P => P.UnitsInStock > 0).Count();
+            //Result = ProductList.Count(P => P.UnitsInStock > 0);
+            //Console.WriteLine(Result); // 72
+
+            //bool Flag = ProductList.TryGetNonEnumeratedCount(out Result);
+            //Console.WriteLine(Flag); // True 
+            //Console.WriteLine(Result); // 77
+
+            //Console.WriteLine("================================");
+            //var LazyNumbers = GetLazyNumbers();
+            //Result = LazyNumbers.Count(); // 10
+            //Flag = LazyNumbers.TryGetNonEnumeratedCount(out Result);
+            //// Works best with IQueryable<T> or collections that can determine the count without iteration.
+            //Console.WriteLine(Flag); // False 
+            //Console.WriteLine(Result); // 0 
+            #endregion
+
+            #region Sum() , Average() 
+
+            //var Result = ProductList.Sum(P => P.UnitPrice); // 2222.7100
+            //Result = ProductList.Average(P => P.UnitPrice); // 28.83
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region Max(), MaxBy() , Min() , MinBy() 
+
+            //var Result = ProductList.Max();
+            //// Product Must be Implement Interface "IComparable"
+            //Console.WriteLine(Result); // ProductID:38,ProductName:Côte de Blaye,CategoryBeverages,UnitPrice:263.5000,UnitsInStock:17
+            //Result = ProductList.Min(); // 2.5
+            //Console.WriteLine(Result); // ProductID:33,ProductName:Geitost,CategoryDairy Products,UnitPrice:2.5000,UnitsInStock:112
+
+            //Result = ProductList.Max(new ProductUnitInStockComparer());
+            //Console.WriteLine(Result); //ProductID:75,ProductName:Rhönbräu Klosterbier,CategoryBeverages,UnitPrice:7.7500,UnitsInStock:125
+
+
+            //var MinLengthProductName = ProductList.Min(P => P.ProductName); // 4
+            //Console.WriteLine(MinLengthProductName);
+
+
+            //Result = (from P in ProductList
+            //          where P.ProductName == MinLengthProductName
+            //          select P).FirstOrDefault(); // Chai
+            //Console.WriteLine(Result); // ProductID:17,ProductName:Alice Mutton,CategoryMeat/Poultry,UnitPrice:39.0000,UnitsInStock:0
+
+            //Result = ProductList.MinBy(P => P.ProductName); // .NET 6+
+            //Console.WriteLine(Result); // ProductID:17,ProductName:Alice Mutton,CategoryMeat/Poultry,UnitPrice:39.0000,UnitsInStock:0
+
+
+            #endregion
+
+            #region Aggregate() 
+
+
+            //string[] Words = { "Hello", "From", "Route", "Academy" };
+            //var Result = Words.Aggregate((Str01, Str02) => $"{Str01} {Str02}");
+            //Console.WriteLine(Result); // Hello From Route Academy
+            //                           // Str01 = Hello , Str02 = From
+            //                           // Str01 = Hello From , Str02 = Route
+            //                           // Str01 = Hello From Route , Str02 = Academy
+            //                           // Result = Hello From Route Academy
+
+            //Result = Words.Aggregate("Hi : ", (Str01, Str02) => $"{Str01} {Str02}");
+            //Console.WriteLine(Result); // Hi :  Hello From Route Academy
+            //Result = Words.Aggregate("Hi : ", (Str01, Str02) => $"{Str01} {Str02}", (TAcc) => TAcc.Replace(' ', '_'));
+            //Console.WriteLine(Result); //Hi_:__Hello_From_Route_Academy
 
 
             #endregion
@@ -402,6 +482,55 @@ namespace Assginment
             #endregion
 
             #endregion
+
+            #endregion
+
+
+
+            #region Assignment
+
+            #region Restriction Operators
+
+            #region 1. Find all products that are out of stock.
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock == 0);
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 2. Find all products that are in stock and cost more than 3.00 per unit.
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 0 && P.UnitPrice > 3M);
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 3. Returns digits whose name is shorter than their value.
+
+            //string[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+            //var Result = Arr.Where((A, I) => A.Length < I);
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #endregion
+
+            #endregion
+        }
+
+        static IEnumerable<int> GetLazyNumbers()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                yield return i;
+            }
         }
     }
 }
