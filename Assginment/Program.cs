@@ -1,4 +1,7 @@
 ﻿
+using Assginment.Demo;
+using Assginment.Demo.Data;
+using static Assginment.Demo.ListGenerator;
 
 namespace Assginment
 {
@@ -60,8 +63,8 @@ namespace Assginment
             //for (var i = 0; i < 10; i++) { }
             //foreach (var item in args) { }
 
-            // Var Is Recommended
-            // Errors => Compilation Time
+            //Var Is Recommended
+            //Errors => Compilation Time
 
             // var X = null; // Compilation Error
 
@@ -72,15 +75,329 @@ namespace Assginment
 
             #region Extension Methods
 
-            
+            //int X = 12345;
 
-            int X = 12345;
-
-            
-            // int Y = ExtensionMethod.Reverse(X);
+            //// int Y = IntExtension.Reverse(X);
 
             //int Y = X.Reverse();
 
+            //Console.WriteLine(Y);
+
+            #endregion
+
+            #region Anonymous Type
+
+            ////object Emp01 = new { Id = 10, Name = "Adham", Salary = 1000 };
+
+            ////Console.WriteLine(Emp01.Salary); // Invalid
+
+            //var Emp02 = new { Id = 10, Name = "Adham", Salary = 1000 };
+
+            ////Emp02.Salary = 2000; Invalid
+
+            //var Emp03 = new { Id = Emp02.Id, Name = Emp02.Name, Salary = 2000 }; // Till C# 9
+
+            //var Emp04 = Emp03 with { Salary = 2000 }; // C# 10 Feature .Net 6
+
+            //Console.WriteLine($"Emp 02 = {Emp02.GetType().Name}"); // AnonymousType0`3
+            //Console.WriteLine($"Emp 03 = {Emp03.GetType().Name}"); // AnonymousType0`3
+            //Console.WriteLine($"Emp 04 = {Emp04.GetType().Name}"); // AnonymousType0`3
+
+            //// The Anonymous Type As Long As : 
+            //// 1. Same Properties Name [Case Senstive]
+            //// 2. Same Properties Order
+
+            //var Emp05 = new { id = 10, Name = "Adham", Salary = 1000 };
+            //Console.WriteLine($"Emp 05 = {Emp05.GetType().Name}"); // AnonymousType1`3
+
+            #endregion
+
+            #region What Is LINQ
+
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //List<int> OddNumbers = Numbers.Where(Num => Num % 2 != 0).ToList();
+
+            //foreach (int number in OddNumbers)
+            //    Console.WriteLine(number);
+
+            //// You Can Use "LINQ Operator" Against The Data [Stored in Sequence]
+            //// Regardless Data Store [Sql server , Oracle , MySql]
+
+            //// Sequence => The Object From Vlass That Impelement Built In Interface "IEnmerable"
+            //// 1. Local -> Static [L2Object] , XML File [L2XML]
+            //// 2. Remote -> [L2EF]
+
+            #endregion
+
+            #region LINQ Syntax [Fluent Syntax , Query Syntax]
+
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            #region Fluent Syntax
+
+            //// 1. Fluent Syntax
+            ////    1.1 Call "LINQ Operators" as Static Method
+
+            //var OddNumbers = Enumerable.Where(Numbers, X => X % 2 == 1);
+
+            ////    1.2 Call "LINQ Operators" as Extension Method [Recommended]
+
+            //OddNumbers = Numbers.Where(X => X % 2 == 1);
+
+            //foreach (var item in OddNumbers)
+            //{
+            //    Console.WriteLine(item); // 1 3 5 7 9
+            //}
+
+            #endregion
+
+            #region Query Syntax - Like SQL Server Style
+
+            //// 3. Select *
+            //// 1. From Numbers N
+            //// 2. Where N % 2 == 1
+
+            //var OddNumbers = from N in Numbers
+            //                 where N % 2 == 1
+            //                 select N;
+
+            //// Must Be Begin With Keyword "From"
+            //// Must Be End With Select OR GroupBy
+
+
+            //foreach (var Number in OddNumbers)
+            //{
+            //    Console.Write($"{Number} ");
+            //}
+
+            #endregion
+
+            #endregion
+
+            #region Execution Ways
+
+            #region Deferred Execution [Latest Version Of Data]
+
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //var OddNumbers = Numbers.Where(X => X % 2 == 1); // 1 3 5 7 9
+
+            //Numbers.AddRange(new int[] { 11, 12, 13, 14, 15 });
+            //// Where Is Executed With Deferred Execution
+
+            //foreach (var Number in OddNumbers)
+            //{
+            //    Console.Write($"{Number} ");
+            //}
+
+            #endregion
+
+            #region Immediate Execution [Elements Operators , Casting Operators , Aggregate Operators]
+
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //var OddNumbers = Numbers.Where(X => X % 2 == 1).ToList(); // 1 3 5 7 9
+
+            //Numbers.AddRange(new int[] { 11, 12, 13, 14, 15 });
+            //// Where Is Executed With Immediate Execution
+
+            //foreach (var Number in OddNumbers)
+            //{
+            //    Console.Write($"{Number} ");
+            //}
+
+            #endregion
+
+            #endregion
+
+            #region Data Setup
+
+            //Console.WriteLine(ProductsList[0]);
+
+            //Console.WriteLine(CustomersList[0]);
+
+            #endregion
+
+
+            #region LINQ Categories
+
+            #region 1. Filtration [Restriction] Operators - Where
+
+            #region Get Products Out Of Stock
+
+            //// Get Products Out Of Stock
+            //// Fluent Syntax
+            //var Result = ProductsList.Where(P => P.UnitsInStock == 0);
+
+            //// Query Syntax
+            //Result = from P in ProductsList
+            //         where P.UnitsInStock == 0
+            //         select P;
+
+            #endregion
+
+            #region Get Products In Stock & Category Meat/Poultry
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 0 && P.Category == "Meat/Poultry");
+
+            //Result = from P in ProductsList
+            //         where P.UnitsInStock > 0 && P.Category == "Meat/Poultry"
+            //         select P;
+
+            #endregion
+
+            // Indexed Where
+
+            //var Result = ProductsList.Where((P, I) => P.UnitsInStock == 0 && I < 10);
+
+            //foreach (var Product in Result)
+            //    Console.WriteLine(Product);
+
+            #endregion
+
+            #region 2. Transformation [Projection] Operators [Select , Select Many]
+
+            //var Result = ProductsList.Select(P => P.ProductName);
+
+            //Result = from P in ProductsList
+            //         select P.ProductName;
+
+            //var Result02 = ProductsList.Select(P => new { P.ProductID, P.ProductName });
+
+            //var Result03 = ProductsList.Where(P => P.UnitsInStock > 0)
+            //    .Select(P => new
+            //    {
+            //        Id = P.ProductID,
+            //        Name = P.ProductName,
+            //        OldPrice = P.UnitPrice,
+            //        NewPrice = P.UnitPrice * 0.9M,
+            //    });
+
+            //Result03 = from P in ProductsList
+            //           where P.UnitsInStock > 0
+            //           select new
+            //           {
+            //               Id = P.ProductID,
+            //               Name = P.ProductName,
+            //               OldPrice = P.UnitPrice,
+            //               NewPrice = P.UnitPrice * 0.9M
+            //           };
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 0)
+            //    .Select((P, I) => new
+            //    {
+            //        Serial = I + 1,
+            //        Name = P.ProductName
+            //    });
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            ////var Result = CustomersList.SelectMany(C => C.Orders);
+
+            //var Result = CustomersList.SelectMany(C => C.Orders, (C, O) => new { C.CustomerName, O.OrderID });
+
+
+            //Result = from C in CustomersList
+            //         from O in C.Orders
+            //         select new
+            //         {
+            //             C.CustomerName,
+            //             O.OrderID
+            //         };
+
+            //var Result = CustomersList.SelectMany((C, cIndex) =>
+            //C.Orders.Select((O, oIndex) => new
+            //{ CustomerIndex = cIndex + 1, C.CustomerName, OrderIndex = oIndex + 1, O.OrderID }));
+
+            //List<int> Numbers = [ 1,2,3,4,5,6,7];
+            //List<char> Letters = ['A', 'B', 'C', 'D', 'E', 'F' ];
+
+            ////var Result = Numbers.Zip(Letters);
+
+            //List<string> words = ["First", "Second", "Third", "Fourth", "Fifth"];
+
+            ////var Result = Numbers.Zip(Letters , words);
+
+            //var Result = Numbers.Zip(Letters , (N , L) => $"NUmber {N} Zipped With Letter {L}");
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
+
+            #region 3. Ording Operators [Ascending , Descending , Reverse , ThenBy , ThenByDescending]
+
+            // var Result = CustomersList.Order();
+            //// At least one one object must implement IComparaple.
+
+            //var Result = CustomersList.OrderBy(C => C.CustomerID);
+
+            //var Result = CustomersList.OrderByDescending(C => C.CustomerID);
+
+            //var Result = ProductsList.OrderByDescending(P => P.UnitsInStock).ThenByDescending(P => P.UnitPrice);
+
+            //Result = from P in ProductsList
+            //         orderby P.UnitsInStock, P.UnitPrice descending
+            //         select P;
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 10)
+            //    .Select(P => P.ProductName)
+            //    .OrderByDescending(N => N.Length);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
+
+            #region 4. Element operators [Valid With Fluent - Method Syntax Only]
+
+            ////var Result = ProductsList.First();
+
+            ////Result = ProductsList.Last();
+
+            ////var Result = ProductsList.FirstOrDefault(P => P.UnitsInStock == 0, new Product());
+
+            ////var Result = ProductsList.ElementAt(1);
+            ////Result = ProductsList.ElementAt(new Index(1, true));
+            ////// سينتاكس سكر
+            ////Result = ProductsList.ElementAt(^1);
+            ////// يعني الاول من ورا 
+            ////// من الاخر مبيكونش في index[0]
+
+            ////Result = ProductsList.ElementAtOrDefault(100); // Return Deafult
+
+            ////var Result = ProductsList.Single(P => P.ProductID == 1);
+
+            ////Result = ProductsList.SingleOrDefault(P => P.UnitsInStock > 1000); // Return Deafult
+
+            //// Hybrid Syntax
+            //var Result = (from P in ProductsList
+            //          where P.UnitsInStock == 0
+            //          select new 
+            //          {
+            //            P.ProductID,
+            //            P.ProductName,
+            //            P.UnitsInStock
+                      
+            //          }).SingleOrDefault();
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region Aggregate Operators
+
+
+
+            #endregion
 
             #endregion
 
