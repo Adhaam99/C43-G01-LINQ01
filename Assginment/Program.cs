@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Assginment.Demo;
 using Assginment.Demo.Data;
 using static Assginment.Demo.ListGenerator;
@@ -547,6 +548,88 @@ namespace Assginment
             //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
             //var Result = Arr.Where(A => A > 5).ElementAt( new Index(1));
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #endregion
+
+            #region Aggregate Operators
+
+            #region 1. Uses Count to get the number of odd numbers in the array
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var Reslut = Arr.Count(num => num % 2 == 1);
+
+            //Console.WriteLine(Reslut);
+
+            #endregion
+
+            #region 2. Return a list of customers and how many orders each has.
+
+            //var Result = CustomersList.Select(C => new { C.CustomerName, NumberOfOrders = C.Orders.Count() });
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 3. Return a list of categories and how many products each has
+
+            //var Result = ProductsList.Select(C => new { C.Category, NumberOfProducts = C.Category.Count() });
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 4. Get the total of the numbers in an array.
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var Result = Arr.Sum();
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region 5. Get the total number of characters of all words in dictionary_english.txt (Readdictionary_english.txt into Array of String First).
+
+            //string[] words = "dictionary_english.txt".Split('_' , '.' );
+
+            //var Result = words.Select(word => word.Length).Sum();
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region 6. Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txtinto Array of String First).
+
+            //string[] words = "dictionary_english.txt".Split('_', '.');
+
+            //var Result = words.MinBy( word => word.Length);
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region 7. Get the length of the longest word in dictionary_english.txt (Read dictionary_english.txtinto Array of String First).
+
+            //string[] words = "dictionary_english.txt".Split('_', '.');
+
+            //var Result = words?.MaxBy(word => word.Length)?.Length;
+
+            //Console.WriteLine(Result);
+
+            #endregion
+
+            #region 8. Get the average length of the words in dictionary_english.txt (Read dictionary_english.txtinto Array of String First).
+
+            //string[] words = "dictionary_english.txt".Split('_', '.');
+
+            //var Result = words.Average(word => word.Length);
 
             //Console.WriteLine(Result);
 
