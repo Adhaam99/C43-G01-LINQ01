@@ -4,6 +4,7 @@ using System.Runtime.Intrinsics.Arm;
 using System.Threading;
 using Assginment.Demo;
 using Assginment.Demo.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Assginment.Demo.ListGenerator;
 
 namespace Assginment
@@ -733,6 +734,95 @@ namespace Assginment
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 2. Produce a sequence of the uppercase and lowercase versions of each word in the original array(Anonymous Types).
+
+            //string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+
+            //var Result = words.Select(W => new { LowerCase = W.ToLower(), UpperCase = W.ToUpper() });
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 3. Produce a sequence containing some properties of Products, including UnitPrice which is renamed to Price in the resulting type.
+
+            //var Result = ProductsList.Select(P => new { P.ProductID, P.ProductName, Price = P.UnitPrice });
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 4. Determine if the value of int in an array matches their position in the array.
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var Result = Arr.Select((N, I) => $"{N}: {N == I}");
+
+            //Console.WriteLine("Number: In-place?");
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region 5. Returns all pairs of numbers from both arrays such that the number from numbersA is less than the number from numbersB.
+
+            //int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            //int[] numbersB = { 1, 3, 5, 7, 8 };
+
+            //var Result = from A in numbersA
+            //             from B in numbersB
+            //             where A < B
+            //             select $"{A} Is Less Than {B}";
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+
+            #endregion
+
+            #region 6. Select all orders where the order total is less than 500.00.
+
+            //var Result = from C in CustomersList
+            //             from O in C.Orders
+            //             where O.Total > 500
+            //             select new
+            //             {
+            //                 C.CustomerName,
+            //                 O
+            //             };
+
+            //foreach (var C in Result)
+            //{
+            //    Console.WriteLine(C.CustomerName);
+
+            //    Console.WriteLine($"\t {C.O}");
+            //}
+
+            #endregion
+
+            #region 7. Select all orders where the order was made in 1998 or later.
+
+            //var Result = from C in CustomersList
+            //             from O in C.Orders
+            //             where O.OrderDate >= new DateTime(1998 , 1 , 1)
+            //             select new
+            //             {
+            //                 C.CustomerName,
+            //                 O
+            //             };
+
+            //foreach (var C in Result)
+            //{
+            //    Console.WriteLine(C.CustomerName);
+
+            //    Console.WriteLine($"\t {C.O}");
+            //}
 
             #endregion
 
