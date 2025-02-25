@@ -653,12 +653,12 @@ namespace Assginment
 
             #region 2. Uses a custom comparer to do a case-insensitive sort of the words in an array
 
-            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.Order();
+            var Result = Arr.Order( new Assginment.Assignment.StringCustomComparer() );
 
-            //foreach (var item in Result)
-            //    Console.WriteLine(item);
+            foreach (var item in Result)
+                Console.WriteLine(item);
 
             #endregion
 

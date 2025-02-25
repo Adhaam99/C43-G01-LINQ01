@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assginment.Assignment
 {
-    class StringComparer : IComparer<string>
+    class StringCustomComparer : IComparer<string>
     {
         public int Compare(string? x, string? y)
         {
