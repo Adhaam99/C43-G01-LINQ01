@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Intrinsics.Arm;
 using System.Threading;
 using Assginment.Demo;
+using Assginment.Assignment;
 using Assginment.Demo.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Assginment.Demo.ListGenerator;
@@ -653,12 +654,12 @@ namespace Assginment
 
             #region 2. Uses a custom comparer to do a case-insensitive sort of the words in an array
 
-            string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var Result = Arr.Order( new Assginment.Assignment.StringCustomComparer() );
+            //var Result = Arr.Order( new Assginment.Assignment.StringCustomComparer() );
 
-            foreach (var item in Result)
-                Console.WriteLine(item);
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
 
             #endregion
 
@@ -686,7 +687,7 @@ namespace Assginment
 
             //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.OrderBy(W => W.Length).ThenBy(W => W, StringComparer.OrdinalIgnoreCase);
+            //var Result = Arr.OrderBy(W => W.Length).ThenBy(W => W, new StringCustomComparer());
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
@@ -706,7 +707,7 @@ namespace Assginment
 
             //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.OrderBy( W => W.Length).ThenByDescending( W => W, StringComparer.OrdinalIgnoreCase);
+            //var Result = Arr.OrderBy(W => W.Length).ThenByDescending(W => W, new StringCustomComparer());
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
