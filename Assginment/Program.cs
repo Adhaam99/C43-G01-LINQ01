@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Intrinsics.Arm;
 using System.Threading;
 using Assginment.Demo;
+using Assginment.Assignment;
 using Assginment.Demo.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Assginment.Demo.ListGenerator;
@@ -655,7 +656,7 @@ namespace Assginment
 
             //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.Order();
+            //var Result = Arr.Order( new Assginment.Assignment.StringCustomComparer() );
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
@@ -686,7 +687,7 @@ namespace Assginment
 
             //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.OrderBy(W => W.Length).ThenBy(W => W, StringComparer.OrdinalIgnoreCase);
+            //var Result = Arr.OrderBy(W => W.Length).ThenBy(W => W, new StringCustomComparer());
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
@@ -706,7 +707,7 @@ namespace Assginment
 
             //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            //var Result = Arr.OrderBy( W => W.Length).ThenByDescending( W => W, StringComparer.OrdinalIgnoreCase);
+            //var Result = Arr.OrderBy(W => W.Length).ThenByDescending(W => W, new StringCustomComparer());
 
             //foreach (var item in Result)
             //    Console.WriteLine(item);
